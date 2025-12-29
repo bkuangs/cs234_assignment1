@@ -19,13 +19,21 @@
 **Value Iteration:** Value iteration differs from policy iteration in that it cares only about the max value at each state and it does not maintain a policy while running. PI evaluates every single policy during each iteration -> less iterations, but longer iterations VI finds the best possible value in each state -> more iterations, but faster iterations. VI effectively combines "Evaluation" and "Improvement" into a single step.  
 
 ## What is the difference between Policy and Value iteration?
-Both algorithms share the same working principle, and they can be seen as two cases of the generalized policy iteration. However, the optimality Bellman operator contains a `max` operator, which is non-linear and, therefore, it has different features.  
+Both algorithms share the same working principle, and they can be seen as two cases of the generalized policy iteration. However, the **Optimality Bellman Operator** contains a `max` operator, which is non-linear and, therefore, it has different features.  
 
 **Key points:**
-- Policy iteration includes: policy evaluation + policy improvement, and the two are repeated iteratively until policy converges.
-- Value iteration includes: finding optimal value function + one policy extraction. There is no repeat of the two because once the value function is optimal, then the policy out of it should also be optimal (i.e. converged).
-- Finding optimal value function can also be seen as a combination of policy improvement (due to max) and truncated policy evaluation (the reassignment of v_(s) after just one sweep of all states regardless of convergence).
-- The algorithms for policy evaluation and finding optimal value function are highly similar except for a max operation (as highlighted)
+- Policy iteration: policy evaluation + policy improvement, and the two are repeated iteratively until policy converges.
+- Value iteration: find optimal value function + one policy extraction. There is no repeat of the two because once the value function is optimal, then the policy out of it should also be optimal (i.e. converged).
+- Finding optimal value function can also be seen as a combination of policy improvement (due to max) and truncated policy evaluation (the reassignment of `v_(s)` after just one sweep of all states regardless of convergence).
+- **The algorithms for policy evaluation and finding optimal value function are highly similar except for a max operation**
 - Similarly, the key step to policy improvement and policy extraction are identical except the former involves a stability check.
-- 
-*In my experience, policy iteration is faster than value iteration, as a policy converges more quickly than a value function.*
+
+*In my experience, policy iteration is faster than value iteration, as a policy converges more quickly than a value function.*  
+
+**The basic difference:**  
+
+- Policy Iteration: You randomly select a policy and find value function corresponding to it, then find a new (improved) policy based on the previous value function, and so on this will lead to optimal policy .
+- Value Iteration: You randomly select a value function, then find a new (improved) value function in an iterative process, until reaching the optimal value function, then derive optimal policy from that optimal value function .
+
+Policy iteration works on principle of “Policy evaluation —-> Policy improvement”.  
+Value Iteration works on principle of “ Optimal value function —-> optimal policy”.
